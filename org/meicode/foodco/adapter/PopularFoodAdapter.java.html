@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>PopularFoodAdapter.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PopularFoodAdapter.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org.meicode.foodco.adapter</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.content.Context</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.LayoutInflater</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.ViewGroup</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ImageView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.annotation.NonNull</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.recyclerview.widget.RecyclerView</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">org.meicode.foodco.R</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.meicode.foodco.model.PopularFood</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+
+<span class="s2">//using extend and parent functions we connecting our information about products to our android apps</span>
+<span class="s2">//and here we also will bind some data with recyclerview</span>
+
+<span class="s0">public class </span><span class="s1">PopularFoodAdapter </span><span class="s0">extends </span><span class="s1">RecyclerView.Adapter&lt;PopularFoodAdapter.PopularFoodViewHolder&gt; {</span>
+
+    <span class="s1">Context context</span><span class="s0">;</span>
+    <span class="s1">List&lt;PopularFood&gt; popularFoodList</span><span class="s0">;</span>
+
+
+
+    <span class="s0">public </span><span class="s1">PopularFoodAdapter(Context context</span><span class="s0">, </span><span class="s1">List&lt;PopularFood&gt; popularFoodList) {</span>
+        <span class="s0">this</span><span class="s1">.context = context</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.popularFoodList = popularFoodList</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@NonNull</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public </span><span class="s1">PopularFoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent</span><span class="s0">, int </span><span class="s1">viewType) {</span>
+
+        <span class="s1">View view = LayoutInflater.from(context).inflate(R.layout.popular_food_row_item</span><span class="s0">, </span><span class="s1">parent</span><span class="s0">, false</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s0">return new </span><span class="s1">PopularFoodViewHolder(view)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onBindViewHolder(@NonNull PopularFoodViewHolder holder</span><span class="s0">, int </span><span class="s1">position) {</span>
+
+        <span class="s1">holder.foodImage.setImageResource(popularFoodList.get(position).getImageUrl())</span><span class="s0">;</span>
+        <span class="s1">holder.name.setText(popularFoodList.get(position).getName())</span><span class="s0">;</span>
+        <span class="s1">holder.price.setText(popularFoodList.get(position).getPrice())</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public int </span><span class="s1">getItemCount() {</span>
+        <span class="s0">return </span><span class="s1">popularFoodList.size()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+
+    <span class="s0">public static final class </span><span class="s1">PopularFoodViewHolder </span><span class="s0">extends </span><span class="s1">RecyclerView.ViewHolder {</span>
+
+        <span class="s1">ImageView foodImage</span><span class="s0">;</span>
+        <span class="s1">TextView price</span><span class="s0">, </span><span class="s1">name</span><span class="s0">;</span>
+
+        <span class="s0">public </span><span class="s1">PopularFoodViewHolder(@NonNull View itemView) {</span>
+            <span class="s0">super</span><span class="s1">(itemView)</span><span class="s0">;</span>
+
+            <span class="s1">foodImage = itemView.findViewById(R.id.food_image)</span><span class="s0">;</span>
+            <span class="s1">price = itemView.findViewById(R.id.price)</span><span class="s0">;</span>
+            <span class="s1">name = itemView.findViewById(R.id.name)</span><span class="s0">;</span>
+
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
